@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+
+        <!-- Acción del Menú para abrir la vista del generador de contraseñas -->
+        <record id="action_generador_contrasenas" model="ir.actions.client">
+            <field name="name">Generador de Contraseñas</field>
+            <field name="tag">generador_contrasenas</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Elemento de Menú que enlaza a la acción -->
+        <menuitem id="menu_generador_contrasenas_main" name="Generador de Contraseñas"
+                  action="action_generador_contrasenas"/>
+
+    </data>
+</odoo>
