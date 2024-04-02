@@ -1,0 +1,49 @@
+ 
+version: '3.9' # Define la versión del archivo Docker Compose.
+
+services: # Esta sección describe los servicios (contenedores) que formarán parte de la aplicación.
+
+  web: # Servicio de la aplicación Odoo.
+    image: odoo:16.0 # Utiliza la imagen oficial de Odoo versión 16.0.
+    depends_on:
+      - db # Indica que el servicio web depende del servicio de la base de datos "db".
+    ports:
+      - "8069:8069" # Mapea el puerto 8069 del host al puerto 8069 del contenedor, usado por Odoo.
+    volumes: # Define los volúmenes para persistencia de datos y configuración.
+      - odoo-web-data:/var/lib/odoo # Persiste los datos de Odoo.
+      - ./config_odoo:/etc/odoo # Monta la configuración local en el contenedor.
+      - ./dev_addons:/mnt/extra-addons # Monta addons de desarrollo.
+      - ./log:/var/log/odoo # Monta una carpeta para los logs.
+    environment: # Variables de entorno para la configuración de Odoo.
+      - DB_HOST=db # Nombre del host de la base de datos.
+      - DB_USER=odoo # Usuario de la base de datos.
+      - DB_PASSWORD=odoo # Contraseña de la base de datos.
+    networks:
+      - odoo-net # Red a la que se conectará este servicio.
+
+  db: # Servicio de base de datos PostgreSQL.
+    image: postgres:16.0 # Utiliza la imagen oficial de PostgreSQL versión 16.0.
+    ports:
+      - 5432:5432/tcp # Mapea el puerto 5432 del host al puerto 5432 del contenedor.
+    environment: # Variables de entorno para la configuración de PostgreSQL.
+      - POSTGRES_DB=postgres # Nombre de la base de datos por defecto.
+      - POSTGRES_PASSWORD=odoo # Contraseña del usuario de la base de datos.
+      - POSTGRES_USER=odoo # Usuario de la base de datos.
+      - PGDATA=/var/lib/postgres/data/pgdata # Define la ubicación de los archivos de datos de la base.
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata # Persiste los datos de la base de datos.
+    networks:
+      - odoo-net # Red a la que se conectará este servicio.
+    healthcheck: # Configuración del chequeo de salud para el contenedor de la base de datos.
+      test: ["CMD", "pg_isready"] # Comando para verificar la disponibilidad.
+      interval: 10s # Intervalo entre chequeos.
+      timeout: 5s # Tiempo máximo antes de considerar la respuesta fallida.
+      retries: 5 # Número de reintentos antes de considerar el contenedor como no saludable.
+
+networks: # Define las redes a ser utilizadas por los contenedores.
+  odoo-net: # Red con driver bridge para comunicación entre contenedores.
+    driver: bridge
+
+volumes: # Define los volúmenes para la persistencia de datos.
+  odoo-web-data: # Volumen para los datos de Odoo.
+  odoo-db-data: # Volumen para los datos de PostgreSQL.

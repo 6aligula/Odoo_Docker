@@ -1,0 +1,45 @@
+version: '3.9'
+ 
+services:
+  web:
+    image: odoo:16.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./config_odoo:/etc/odoo
+      - ./dev_addons:/mnt/extra-addons
+      - ./log:/var/log/odoo
+    environment:
+      - DB_HOST=db
+      - DB_USER=odoo
+      - DB_PASSWORD=odoo
+    networks:
+      - odoo-net
+  db:
+    image: postgres:16.0
+    ports:
+      - 5432:5432/tcp
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgres/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+    networks:
+      - odoo-net
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5  
+networks:
+  odoo-net:
+    driver: bridge
+ 
+volumes:
+  odoo-web-data:
+  odoo-db-data:
