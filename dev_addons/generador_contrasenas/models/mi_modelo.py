@@ -1,7 +1,7 @@
 from odoo import models, fields
 
 class MiModelo(models.Model):
-    _name = 'mi.modelo'
-    _description = 'Descripción de mi modelo'
+    _name = 'x_generador_contrasenas.mi_modelo'
+    _description = 'Descripción de XGeneradorContrasenasMiModelo'
 
     name = fields.Char('Nombre')

@@ -4,4 +4,4 @@ calamot
 Email
 calamot@gmail.com
 Password
-calamot2023
+calamot

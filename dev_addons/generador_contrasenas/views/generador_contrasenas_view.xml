@@ -7,19 +7,19 @@
                     <form id="generador_form">
                         <input type="number" name="longitud" placeholder="Longitud de la contraseña" />
                         <div>
-                            <input type="checkbox" name="con_digitos" id="con_digitos" checked />
+                            <input type="checkbox" name="con_digitos" id="con_digitos" checked="true" />
                             <label for="con_digitos">Incluir Dígitos</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="con_mayusculas" id="con_mayusculas" checked />
+                            <input type="checkbox" name="con_mayusculas" id="con_mayusculas" checked="true" />
                             <label for="con_mayusculas">Incluir Mayúsculas</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="con_minusculas" id="con_minusculas" checked />
+                            <input type="checkbox" name="con_minusculas" id="con_minusculas" checked="true" />
                             <label for="con_minusculas">Incluir Minúsculas</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="con_simbolos" id="con_simbolos" checked />
+                            <input type="checkbox" name="con_simbolos" id="con_simbolos" checked="true" />
                             <label for="con_simbolos">Incluir Símbolos</label>
                         </div>
                         <button type="button" onclick="generarContrasena()">Generar Contraseña</button>
@@ -27,25 +27,8 @@
                     <div id="contrasena_generada"></div>
                 </div>
             </div>
-            <script>
-                function generarContrasena() {
-                    var form = document.getElementById('generador_form');
-                    var formData = new FormData(form);
-                    odoo.define('generador_contrasenas.generar', function (require) {
-                        'use strict';
-                        var ajax = require('web.ajax');
-                        ajax.jsonRpc("/generador_contrasenas/generar", 'call', {
-                            'longitud': formData.get('longitud'),
-                            'con_digitos': formData.get('con_digitos') ? true : false,
-                            'con_mayusculas': formData.get('con_mayusculas') ? true : false,
-                            'con_minusculas': formData.get('con_minusculas') ? true : false,
-                            'con_simbolos': formData.get('con_simbolos') ? true : false
-                        }).then(function (data) {
-                            document.getElementById('contrasena_generada').innerText = 'Contraseña Generada: ' + data.contrasena;
-                        });
-                    });
-                }
-            </script>
         </t>
     </template>
+
+
 </odoo>

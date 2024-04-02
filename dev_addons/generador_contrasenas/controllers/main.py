@@ -4,7 +4,7 @@ import random
 import string
 
 class GeneradorContrasenas(http.Controller):
-    @http.route('/generador_contrasenas', auth='user', website=True)
+    @http.route('/generador_contrasenas', auth='public', website=True)
     def index(self, **kw):
         return request.render("generador_contrasenas.index", {})
 
