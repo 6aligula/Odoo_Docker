@@ -1,7 +1,11 @@
 {
   "pdfExportSettings": {
     "includeName": true,
+<<<<<<< HEAD
     "pageSize": "A4",
+=======
+    "pageSize": "Letter",
+>>>>>>> c67c165 (add pdf manual scaffolf)
     "landscape": false,
     "margin": "0",
     "downscalePercent": 100
