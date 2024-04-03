@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="pass_generate.test_list">
+      <field name="name">pass_generate test list</field>
+      <field name="model">pass_generate.test</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="pass_generate.test_action_window">
+      <field name="name">pass_generate test window</field>
+      <field name="res_model">pass_generate.test</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <!-- <record model="ir.actions.server" id="pass_generate.action_server">
+      <field name="name">pass_generate server</field>
+      <field name="model_id" ref="model_pass_generate_pass_generate"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record> -->
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="pass_generate" id="pass_generate.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="pass_generate.test_menu_1" parent="pass_generate.menu_root"/>
+    <!-- <menuitem name="Menu 2" id="pass_generate.menu_2" parent="pass_generate.menu_root"/> -->
+
+    <!-- actions -->
+
+    <menuitem name="Test" id="pass_generate.test_test_menu_1_list" parent="pass_generate.test_menu_1"
+              action="pass_generate.test_action_window"/>
+    <!-- <menuitem name="Server to list" id="pass_generate" parent="pass_generate.menu_2"
+              action="pass_generate.action_server"/> -->
+
+  </data>
+</odoo>

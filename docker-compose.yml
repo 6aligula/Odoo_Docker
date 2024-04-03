@@ -2,6 +2,7 @@ version: '3.9'
  
 services:
   web:
+    container_name: odoo_16
     image: odoo:16.0
     depends_on:
       - db
@@ -12,33 +13,24 @@ services:
       - ./config_odoo:/etc/odoo
       - ./dev_addons:/mnt/extra-addons
       - ./log:/var/log/odoo
-    environment:
-      - DB_HOST=db
-      - DB_USER=odoo
-      - DB_PASSWORD=odoo
-    networks:
-      - odoo-net
+
   db:
+    container_name: postgres_16
     image: postgres:16.0
     ports:
       - 5432:5432/tcp
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=odoo
-      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo_db
+      - POSTGRES_USER=odoo_db
       - PGDATA=/var/lib/postgres/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
-    networks:
-      - odoo-net
     healthcheck:
       test: ["CMD", "pg_isready"]
       interval: 10s
       timeout: 5s
       retries: 5  
-networks:
-  odoo-net:
-    driver: bridge
  
 volumes:
   odoo-web-data:
