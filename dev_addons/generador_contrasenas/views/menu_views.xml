@@ -2,11 +2,13 @@
     <data>
 
         <!-- Acción del Menú para abrir la vista del generador de contraseñas -->
-        <record id="action_generador_contrasenas" model="ir.actions.client">
+        <record id="action_generador_contrasenas" model="ir.actions.act_url">
             <field name="name">Generador de Contraseñas</field>
-            <field name="tag">generador_contrasenas</field>
+            <field name="type">ir.actions.act_url</field>
+            <field name="url">/generador_contrasenas/generar</field>
             <field name="target">new</field>
         </record>
+
 
         <!-- Elemento de Menú que enlaza a la acción -->
         <menuitem id="menu_generador_contrasenas_main" name="Generador de Contraseñas"

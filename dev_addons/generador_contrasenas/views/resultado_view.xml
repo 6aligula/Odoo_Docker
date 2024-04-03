@@ -1,0 +1,12 @@
+<odoo>
+    <template id="resultado_generacion" name="Resultado de Generación de Contraseña">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="container">
+                    <h1>Resultado de la Generación de Contraseña</h1>
+                    <p>Contraseña Generada: <t t-esc="contrasena"/></p>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

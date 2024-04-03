@@ -4,7 +4,7 @@
             <div id="wrap" class="oe_structure oe_empty">
                 <div class="container">
                     <h1>Generador de Contraseñas</h1>
-                    <form id="generador_form">
+                    <form id="generador_form" action="/generador_contrasenas/generar" method="post">
                         <input type="number" name="longitud" placeholder="Longitud de la contraseña" />
                         <div>
                             <input type="checkbox" name="con_digitos" id="con_digitos" checked="true" />
@@ -22,7 +22,7 @@
                             <input type="checkbox" name="con_simbolos" id="con_simbolos" checked="true" />
                             <label for="con_simbolos">Incluir Símbolos</label>
                         </div>
-                        <button type="button" onclick="generarContrasena()">Generar Contraseña</button>
+                        <button type="submit">Generar Contraseña</button>
                     </form>
                     <div id="contrasena_generada"></div>
                 </div>
