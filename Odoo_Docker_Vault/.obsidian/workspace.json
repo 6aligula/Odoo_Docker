@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Manual con scafflod.md",
+                "file": "Manual añadir modulo.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Manual con scafflod.md",
+                "file": "Manual añadir modulo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Manual con scafflod.md",
+                "file": "Manual añadir modulo.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Manual con scafflod.md"
+                "file": "Manual añadir modulo.md"
               }
             }
           }
@@ -161,6 +161,8 @@
   },
   "active": "40a9e6ee91123adc",
   "lastOpenFiles": [
+    "Manual modulo custom con scaffold.md",
+    "Manual añadir modulo.md",
     "Pasted image 20240403123513.png",
     "Pasted image 20240403123251.png",
     "Pasted image 20240403123142.png",
@@ -170,9 +172,6 @@
     "Pasted image 20240403114322.png",
     "Pasted image 20240403113727.png",
     "Pasted image 20240403113704.png",
-    "Pasted image 20240403113516.png",
-    "Pasted image 20240403113427.png",
-    "Manual añadir modulo.md",
-    "Manual con scafflod.md"
+    "Pasted image 20240403113516.png"
   ]
 }

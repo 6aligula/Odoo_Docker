@@ -24,7 +24,7 @@ http_port = 8069
 
 
 - **[options]:** Esta línea indica el inicio de la sección de configuración de Odoo. Todas las opciones bajo esta línea son parte de la configuración de Odoo.
--
+
 - **admin_passwd = 123456:** Esta es la contraseña del superusuario de Odoo. Se utiliza para realizar operaciones administrativas importantes, como actualizar la lista de módulos o realizar cambios en la configuración del sistema a través de la interfaz web.
 
 - **addons_path = /mnt/extra-addons:** Especifica la ruta (o rutas, separadas por comas) donde Odoo buscará módulos adicionales. Esto permite a Odoo cargar módulos personalizados o de terceros que no están incluidos en la instalación estándar. En tu caso, apunta a `/mnt/extra-addons`, lo que sugiere que en el contenedor de Odoo, este directorio está montado para contener dichos módulos.
